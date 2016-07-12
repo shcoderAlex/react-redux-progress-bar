@@ -6,12 +6,11 @@ export default function progressBarMiddleware({ dispatch }) {
     const { type } = action;
     if(type) next(action);
 
-    if(!!~type.indexOf(constants.REQUEST)){
+    if(type.includes(constants.REQUEST)){
       dispatch({ type: constants.PROGRESS_BAR_START });
-    } else if(!!~type.indexOf(constants.SUCCESS) || !!~type.indexOf(constants.FAILURE)){
+    } else if(type.includes(constants.SUCCESS) || type.includes(constants.FAILURE)){
       dispatch({ type: constants.PROGRESS_BAR_FINISH });
     }
-
-    // next(action);
+    
   }
 }

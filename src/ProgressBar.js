@@ -12,7 +12,9 @@ class ProgressBar extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.loading(newProps);
+    if(newProps.progressBar !== this.props.progressBar){
+      this.loading(newProps);
+    }
   }
 
   componentWillUnmount() {
@@ -20,6 +22,7 @@ class ProgressBar extends React.Component {
   }
 
   loading(props) {
+    console.log(11111);
     const { progressBar } = props;
     const className = (progressBar) ? 'start' : 'finish';
 
